@@ -91,3 +91,11 @@ C:\Users\artdesert\source\repos\i-SysLabsPractice\WebApi\bin\Debug\net6.0\CoreLa
 C:\Users\artdesert\source\repos\i-SysLabsPractice\WebApi\bin\Debug\net6.0\DataAccessLayer.dll
 C:\Users\artdesert\source\repos\i-SysLabsPractice\WebApi\bin\Debug\net6.0\CoreLayer.pdb
 C:\Users\artdesert\source\repos\i-SysLabsPractice\WebApi\bin\Debug\net6.0\DataAccessLayer.pdb
+C:\Users\artdesert\source\repos\i-SysLabsPractice\WebApi\bin\Debug\net6.0\DomainLayer.dll
+C:\Users\artdesert\source\repos\i-SysLabsPractice\WebApi\bin\Debug\net6.0\DomainLayer.pdb
+C:\Users\artdesert\source\repos\i-SysLabsPractice\WebApi\bin\Debug\net6.0\Microsoft.Extensions.Configuration.dll
+C:\Users\artdesert\source\repos\i-SysLabsPractice\WebApi\bin\Debug\net6.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\artdesert\source\repos\i-SysLabsPractice\WebApi\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\artdesert\source\repos\i-SysLabsPractice\WebApi\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\artdesert\source\repos\i-SysLabsPractice\WebApi\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\artdesert\source\repos\i-SysLabsPractice\WebApi\bin\Debug\net6.0\Microsoft.Extensions.FileSystemGlobbing.dll

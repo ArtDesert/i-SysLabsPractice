@@ -13,3 +13,5 @@ C:\Users\artdesert\source\repos\i-SysLabsPractice\CoreLayer\obj\Debug\net6.0\ref
 C:\Users\artdesert\source\repos\i-SysLabsPractice\CoreLayer\bin\Debug\net6.0\DataAccessLayer.dll
 C:\Users\artdesert\source\repos\i-SysLabsPractice\CoreLayer\bin\Debug\net6.0\DataAccessLayer.pdb
 C:\Users\artdesert\source\repos\i-SysLabsPractice\CoreLayer\obj\Debug\net6.0\CoreLayer.csproj.CopyComplete
+C:\Users\artdesert\source\repos\i-SysLabsPractice\CoreLayer\bin\Debug\net6.0\DomainLayer.dll
+C:\Users\artdesert\source\repos\i-SysLabsPractice\CoreLayer\bin\Debug\net6.0\DomainLayer.pdb

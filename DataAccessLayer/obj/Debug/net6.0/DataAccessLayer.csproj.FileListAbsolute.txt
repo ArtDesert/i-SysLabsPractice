@@ -12,3 +12,6 @@ C:\Users\artdesert\source\repos\i-SysLabsPractice\DataAccessLayer\obj\Debug\net6
 C:\Users\artdesert\source\repos\i-SysLabsPractice\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.pdb
 C:\Users\artdesert\source\repos\i-SysLabsPractice\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.genruntimeconfig.cache
 C:\Users\artdesert\source\repos\i-SysLabsPractice\DataAccessLayer\obj\Debug\net6.0\ref\DataAccessLayer.dll
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataAccessLayer\bin\Debug\net6.0\DomainLayer.dll
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataAccessLayer\bin\Debug\net6.0\DomainLayer.pdb
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.csproj.CopyComplete
