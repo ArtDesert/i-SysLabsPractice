@@ -1,8 +1,11 @@
+using CoreLayer.Binders.Implementations;
+using CoreLayer.Binders.Interfaces;
 using CoreLayer.Services.Implementations;
 using CoreLayer.Services.Interfaces;
 using DataAccessLayer.Repositories.Implementations;
 using DataAccessLayer.Repositories.Interfaces;
 using DomainLayer.Entities.Models;
+using DomainLayer.TableInitializators;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,26 +17,29 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var configuration = new ConfigurationBuilder()
-	.SetBasePath(Directory.GetCurrentDirectory())
-	.AddJsonFile("appsettings.json")
-	.Build();
-
 builder.Services.AddDbContext<CompanyStructureContext>(optionsBuilder =>
-	optionsBuilder.UseNpgsql(configuration.GetConnectionString("NpgsqlConnection")), ServiceLifetime.Transient, ServiceLifetime.Transient);
+	optionsBuilder.UseNpgsql(builder.Configuration.GetConnectionString("NpgsqlConnection")), ServiceLifetime.Transient, ServiceLifetime.Transient);
 
 builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<IStatusRepository, StatusRepository>();
 
-
 builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IStatusService, StatusService>();
+builder.Services.AddScoped<IImportService, ImportService>();
 
-var app = builder.Build(); 
+builder.Services.AddScoped<IDepartmentBinder, DepartmentBinder>();
+builder.Services.AddScoped<IEmployeeBinder, EmployeeBinder>();
+builder.Services.AddScoped<IProjectBinder, ProjectBinder>();
+
+builder.Services.AddSingleton<IStatusInitializator, StatusInitializator>();
+
+var app = builder.Build();
+
+app.Services.GetRequiredService<CompanyStructureContext>().Database.Migrate();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

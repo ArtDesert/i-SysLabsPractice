@@ -1,11 +1,6 @@
 ﻿using DataAccessLayer.Repositories.Interfaces;
 using DomainLayer.Entities.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories.Implementations
 {
@@ -18,31 +13,68 @@ namespace DataAccessLayer.Repositories.Implementations
 			_context = context;
 		}
 
-		public async Task<bool> Create(Project entity)
+		public async Task<bool> AddAsync(Project entity)
 		{
-			await _context.Projects.AddAsync(entity);
-			return true;
+			var result = true;
+			try
+			{
+				await _context.Projects.AddAsync(entity);
+				await _context.SaveChangesAsync();
+			}
+			catch (Exception)
+			{
+				result = false;
+			}
+			return result;
 		}
 
-		public async Task<bool> Delete(Project entity)
+		public async Task<Project?> GetAsync(int id)
 		{
-			_context.Projects.Remove(entity);
-			return true;
+			return await _context.Projects
+				.Include(x => x.Employees)
+				.Where(x => x.Id == id)
+				.FirstOrDefaultAsync();
+		}
+		public async Task<IEnumerable<Project>> SelectAsync(int pageNum, int pageSize)
+		{
+			return await _context.Projects
+				.Skip(pageNum * pageSize)
+				.Take(pageSize)
+				.ToListAsync();
 		}
 
-		public async Task<Project> Get(int id)
+		public async Task<bool> UpdateAsync(int id, string name, string projectCode) //todo null
 		{
-			return await _context.Projects.FindAsync(id);
+			var result = true;
+			try
+			{
+				var project = await GetAsync(id);
+				project.Name = name;
+				project.ProjectCode = projectCode;
+				_context.Update(project);
+				await _context.SaveChangesAsync();
+			}
+			catch (Exception)
+			{
+				result = false;
+			}
+			return result;
 		}
 
-		public async Task<IEnumerable<Employee>> GetAllEmployees(Project project)
+		public async Task<bool> RemoveAsync(int id) //todo null
 		{
-			return await _context.Employees.Where(e => e.Projects.Contains(project)).ToListAsync();
-		}
-
-		public async Task<IEnumerable<Project>> Select()
-		{
-			return await _context.Projects.ToListAsync();
+			var result = true;
+			try
+			{
+				var project = await GetAsync(id);
+				_context.Projects.Remove(project);
+				await _context.SaveChangesAsync();
+			}
+			catch (Exception)
+			{
+				result = false;
+			}
+			return result;
 		}
 	}
 }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using System.Reflection;
 
 namespace DomainLayer.Entities.Models
@@ -19,17 +18,13 @@ namespace DomainLayer.Entities.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
-            optionsBuilder.UseNpgsql(configuration.GetConnectionString("NpgsqlConnection"));
-        }
+			AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+		}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        }
-    }
+		}
+	}
 }

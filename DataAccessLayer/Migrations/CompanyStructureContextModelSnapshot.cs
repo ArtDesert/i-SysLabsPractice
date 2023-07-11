@@ -22,7 +22,7 @@ namespace DataAccessLayer.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("DataAccessLayer.Entities.Department", b =>
+            modelBuilder.Entity("DataAccessLayer.Entities.DepartmentDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -44,7 +44,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Department");
+                    b.ToTable("DepartmentDto");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Entities.Employee", b =>
@@ -159,7 +159,7 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("DataAccessLayer.Entities.Employee", b =>
                 {
-                    b.HasOne("DataAccessLayer.Entities.Department", "Department")
+                    b.HasOne("DataAccessLayer.Entities.DepartmentDto", "DepartmentDto")
                         .WithMany("Employees")
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -175,7 +175,7 @@ namespace DataAccessLayer.Migrations
                         .WithMany()
                         .HasForeignKey("SupervisorId");
 
-                    b.Navigation("Department");
+                    b.Navigation("DepartmentDto");
 
                     b.Navigation("Status");
 
@@ -197,7 +197,7 @@ namespace DataAccessLayer.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DataAccessLayer.Entities.Department", b =>
+            modelBuilder.Entity("DataAccessLayer.Entities.DepartmentDto", b =>
                 {
                     b.Navigation("Employees");
                 });

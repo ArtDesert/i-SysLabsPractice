@@ -1,15 +1,16 @@
 ﻿using DomainLayer.Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
 
 namespace DomainLayer.Entities.Configurations
 {
-    internal class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
+    public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
     {
         public void Configure(EntityTypeBuilder<Employee> builder)
         {
             builder.HasKey(x => x.Id);
+
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
 
             builder.Property(x => x.Id)
                 .IsRequired();
@@ -46,6 +47,8 @@ namespace DomainLayer.Entities.Configurations
 
             builder.HasMany(e => e.Projects)
                 .WithMany(p => p.Employees);
-        }
+
+			builder.ToTable("Employee");
+		}
     }
 }

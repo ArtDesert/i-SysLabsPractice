@@ -1,15 +1,16 @@
 ﻿using DomainLayer.Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
 
 namespace DomainLayer.Entities.Configurations
 {
-    internal class DepartmentConfiguration : IEntityTypeConfiguration<Department>
+    public class DepartmentConfiguration : IEntityTypeConfiguration<Department>
     {
         public void Configure(EntityTypeBuilder<Department> builder)
         {
             builder.HasKey(x => x.Id);
+
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
 
             builder.Property(x => x.Id)
                 .IsRequired();

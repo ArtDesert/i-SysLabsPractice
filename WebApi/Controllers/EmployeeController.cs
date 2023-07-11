@@ -1,83 +1,75 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CoreLayer.Services.Interfaces;
+using DomainLayer.DTO;
+using DomainLayer.Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
+	[ApiController]
+	[Route("api/employees")]
 	public class EmployeeController : Controller
 	{
-		// GET: EmployeeController
-		public ActionResult Index()
+		private readonly IEmployeeService _employeeService;
+		private readonly ILogger<Employee> _logger;
+
+		public EmployeeController(IEmployeeService employeeService, ILogger<Employee> logger)
 		{
-			return View();
+			_employeeService = employeeService;
+			_logger = logger;
 		}
 
-		// GET: EmployeeController/Details/5
-		public ActionResult Details(int id)
-		{
-			return View();
-		}
-
-		// GET: EmployeeController/Create
-		public ActionResult Create()
-		{
-			return View();
-		}
-
-		// POST: EmployeeController/Create
 		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Create(IFormCollection collection)
+		public async Task<bool> AddEmployeeAsync(string name, string post, DateTime birthday, string email, string number, int supervisorId,
+			int departmentId, int statusId)
 		{
-			try
+			var employee = new Employee()
 			{
-				return RedirectToAction(nameof(Index));
-			}
-			catch
-			{
-				return View();
-			}
+				Name = name,
+				Post = post,
+				Birthday = birthday,
+				Email = email,
+				Number = number,
+				SupervisorId = supervisorId == 0 ? null : supervisorId, // hack
+				DepartmentId = departmentId,
+				StatusId = statusId
+			};
+			var response = await _employeeService.CreateAsync(employee);
+			return response.Data;
 		}
 
-		// GET: EmployeeController/Edit/5
-		public ActionResult Edit(int id)
+		[HttpGet("{id}")]
+		public async Task<EmployeeDto> GetEmployeeByIdAsync(int id)
 		{
-			return View();
+			var response = await _employeeService.GetAsync(id);
+			return response.Data;
 		}
 
-		// POST: EmployeeController/Edit/5
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Edit(int id, IFormCollection collection)
+		[HttpGet]
+		public async Task<IEnumerable<EmployeeDto>> GetAllEmployeesAsync(int pageNum, int pageSize)
 		{
-			try
-			{
-				return RedirectToAction(nameof(Index));
-			}
-			catch
-			{
-				return View();
-			}
+			var response = await _employeeService.GetEmployeesAsync(pageNum, pageSize);
+			return response.Data;
 		}
 
-		// GET: EmployeeController/Delete/5
-		public ActionResult Delete(int id)
+		[HttpPut]
+		public async Task<bool> UpdateEmployeeAsync(int id, string name, string post, DateTime birthday, string email, string number)
 		{
-			return View();
+			var response = await _employeeService.UpdateAsync(id, name, post, birthday, email, number);
+			return response.Data;
 		}
 
-		// POST: EmployeeController/Delete/5
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Delete(int id, IFormCollection collection)
+		[HttpDelete]
+		public async Task<bool> DeleteEmployeeAsync(int employeeId)
 		{
-			try
-			{
-				return RedirectToAction(nameof(Index));
-			}
-			catch
-			{
-				return View();
-			}
+			var response = await _employeeService.DeleteAsync(employeeId);
+			return response.Data;
+		}
+
+		[HttpGet("{id}/subordinates")]
+		public async Task<IEnumerable<EmployeeDto>> GetAllSubordinatesFromEmployeeAsync(int supervisorId, int pageNum, int pageSize)
+		{
+			var response = await _employeeService.GetAllSubordinatesFromEmployeeAsync(supervisorId, pageNum, pageSize);
+			return response.Data;
 		}
 	}
 }

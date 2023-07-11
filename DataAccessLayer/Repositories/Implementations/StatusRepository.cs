@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.Repositories.Interfaces;
 using DomainLayer.Entities.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Repositories.Implementations
 {
@@ -12,24 +13,18 @@ namespace DataAccessLayer.Repositories.Implementations
 			_context = context;
 		}
 
-		public Task<bool> Create(Status entity)
+		public async Task<Status?> GetAsync(int id)
 		{
-			throw new NotImplementedException();
+			return await _context.Statuses.
+				Where(x => x.Id == id).
+				FirstOrDefaultAsync();
 		}
 
-		public Task<bool> Delete(Status entity)
+		public async Task<IEnumerable<Status>> SelectAsync()
 		{
-			throw new NotImplementedException();
+			return await _context.Statuses.ToListAsync();
 		}
 
-		public async Task<Status> Get(int id)
-		{
-			throw new NotImplementedException();
-		}
 
-		public async Task<IEnumerable<Status>> Select()
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

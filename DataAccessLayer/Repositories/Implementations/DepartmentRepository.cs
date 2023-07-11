@@ -1,11 +1,6 @@
 ﻿using DataAccessLayer.Repositories.Interfaces;
 using DomainLayer.Entities.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories.Implementations
 {
@@ -18,31 +13,69 @@ namespace DataAccessLayer.Repositories.Implementations
 			_context = context;
 		}
 
-		public async Task<bool> Create(Department entity)
+		public async Task<bool> AddAsync(Department entity)
 		{
-			await _context.Departments.AddAsync(entity);
-			return true; //TODO
+			var result = true;
+			try
+			{
+				await _context.Departments.AddAsync(entity);
+				await _context.SaveChangesAsync();
+			}
+			catch (Exception)
+			{
+				result = false;
+			}
+			return result;
 		}
 
-		public async Task<bool> Delete(Department entity)
+		public async Task<Department?> GetAsync(int id)
 		{
-			_context.Departments.Remove(entity);
-			return true; //TODO
+			return await _context.Departments
+				.Include(x=>x.Employees)
+				.Where(x => x.Id == id)
+				.FirstOrDefaultAsync();
 		}
 
-		public async Task<Department> Get(int id)
+		public async Task<IEnumerable<Department>> SelectAsync(int pageNum, int pageSize)
 		{
-			return await _context.Departments.FindAsync(id);
+			return await _context.Departments
+				.Skip(pageNum * pageSize)
+				.Take(pageSize)
+				.ToListAsync();
 		}
 
-		public async Task<IEnumerable<Employee>> GetAllEmployees(Department department)
+		public async Task<bool> UpdateAsync(int id, string name, string departmentCode) //todo null
 		{
-			return await _context.Employees.Where(e => e.DepartmentId == department.Id).ToListAsync();
+			var result = true;
+			try
+			{
+				var department = await GetAsync(id);
+				department.Name = name;
+				department.DepartmentCode = departmentCode;
+				_context.Update(department);
+				await _context.SaveChangesAsync();
+			}
+			catch (Exception)
+			{
+				result = false;
+			}
+			return result;
 		}
 
-		public async Task<IEnumerable<Department>> Select()
+		public async Task<bool> RemoveAsync(int id) //todo null
 		{
-			return await _context.Departments.ToListAsync();
+			var result = true;
+			try
+			{
+				var department = await GetAsync(id);
+				_context.Departments.Remove(department);
+				await _context.SaveChangesAsync();
+			}
+			catch (Exception)
+			{
+				result = false;
+			}
+			return result;
 		}
 	}
 }

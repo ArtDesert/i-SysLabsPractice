@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CoreLayer.Response;
+using DomainLayer.Entities.Models;
 
 namespace CoreLayer.Services.Interfaces
 {
 	public interface IStatusService
 	{
-
+		Task<IBaseResponse<Status>> GetAsync(int id);
+		Task<IBaseResponse<IEnumerable<Status>>> GetStatusesAsync();
 	}
 }

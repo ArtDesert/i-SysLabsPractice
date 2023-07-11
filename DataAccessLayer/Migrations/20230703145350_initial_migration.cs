@@ -13,7 +13,7 @@ namespace DataAccessLayer.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Department",
+                name: "DepartmentDto",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -74,7 +74,7 @@ namespace DataAccessLayer.Migrations
                     table.ForeignKey(
                         name: "FK_Employees_Department_DepartmentId",
                         column: x => x.DepartmentId,
-                        principalTable: "Department",
+                        principalTable: "DepartmentDto",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -149,7 +149,7 @@ namespace DataAccessLayer.Migrations
                 name: "Project");
 
             migrationBuilder.DropTable(
-                name: "Department");
+                name: "DepartmentDto");
 
             migrationBuilder.DropTable(
                 name: "Status");

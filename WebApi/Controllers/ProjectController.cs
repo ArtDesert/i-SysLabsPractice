@@ -1,83 +1,64 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CoreLayer.Services.Interfaces;
+using DomainLayer.DTO;
+using DomainLayer.Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
+	[ApiController]
+	[Route("api/projects")]
 	public class ProjectController : Controller
 	{
-		// GET: ProjectController
-		public ActionResult Index()
+		private readonly IProjectService _projectService;
+		private readonly ILogger<Project> _logger;
+
+		public ProjectController(IProjectService projectService, ILogger<Project> logger)
 		{
-			return View();
+			_projectService = projectService;
+			_logger = logger;
 		}
 
-		// GET: ProjectController/Details/5
-		public ActionResult Details(int id)
-		{
-			return View();
-		}
-
-		// GET: ProjectController/Create
-		public ActionResult Create()
-		{
-			return View();
-		}
-
-		// POST: ProjectController/Create
 		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Create(IFormCollection collection)
+		public async Task<bool> AddProjectAsync(string name, string projectCode)
 		{
-			try
-			{
-				return RedirectToAction(nameof(Index));
-			}
-			catch
-			{
-				return View();
-			}
+			var project = new Project() { Name = name, ProjectCode = projectCode };
+			var response = await _projectService.CreateAsync(project);
+			return response.Data;
 		}
 
-		// GET: ProjectController/Edit/5
-		public ActionResult Edit(int id)
+		[HttpGet("{id}")]
+		public async Task<ProjectDto> GetProjectByIdAsync(int id)
 		{
-			return View();
+			var response = await _projectService.GetAsync(id);
+			return response.Data;
 		}
 
-		// POST: ProjectController/Edit/5
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Edit(int id, IFormCollection collection)
+		[HttpGet]
+		public async Task<IEnumerable<ProjectDto>> GetAllProjectsAsync(int pageNum, int pageSize)
 		{
-			try
-			{
-				return RedirectToAction(nameof(Index));
-			}
-			catch
-			{
-				return View();
-			}
+			var response = await _projectService.GetProjectsAsync(pageNum, pageSize);
+			return response.Data;
 		}
 
-		// GET: ProjectController/Delete/5
-		public ActionResult Delete(int id)
+		[HttpPut]
+		public async Task<bool> UpdateProjectAsync(int id, string name, string projectCode)
 		{
-			return View();
+			var response = await _projectService.UpdateAsync(id, name, projectCode);
+			return response.Data;
 		}
 
-		// POST: ProjectController/Delete/5
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Delete(int id, IFormCollection collection)
+		[HttpDelete("{id}")]
+		public async Task<bool> DeleteProjectAsync(int projectId)
 		{
-			try
-			{
-				return RedirectToAction(nameof(Index));
-			}
-			catch
-			{
-				return View();
-			}
+			var response = await _projectService.DeleteAsync(projectId);
+			return response.Data;
+		}
+
+		[HttpGet("{id}/employees")]
+		public async Task<IEnumerable<EmployeeDto>> GetAllEmployeesOnProjectAsync(int projectId, int pageNum, int pageSize)
+		{
+			var response = await _projectService.GetAllEmployeesOnProjectAsync(projectId, pageNum, pageSize);
+			return response.Data;
 		}
 	}
 }

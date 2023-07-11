@@ -4,11 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DomainLayer.Entities.Configurations
 {
-    internal class StatusConfiguration : IEntityTypeConfiguration<Status>
+    public class StatusConfiguration : IEntityTypeConfiguration<Status>
     {
         public void Configure(EntityTypeBuilder<Status> builder)
         {
-            builder.HasKey(x => x.Id);
+			builder.HasKey(x => x.Id);
+
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
 
             builder.Property(x => x.Id)
                 .IsRequired();
@@ -19,6 +21,8 @@ namespace DomainLayer.Entities.Configurations
             builder.HasMany(s => s.Employees)
                 .WithOne(e => e.Status)
                 .HasForeignKey(e => e.StatusId);
-        }
+
+			builder.ToTable("Status");
+		}
     }
 }
