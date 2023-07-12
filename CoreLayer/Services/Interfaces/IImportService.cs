@@ -1,10 +1,10 @@
 ﻿using CoreLayer.Response;
-using System.Text.Json.Nodes;
 
 namespace CoreLayer.Services.Interfaces
 {
 	public interface IImportService
 	{
-		Task<IBaseResponse<bool>> ImportAsync(JsonObject json);
+		Task<IBaseResponse<bool>> ImportDataFromJsonAsync(string jsonFilePath);
+		string BuildJsonFilePath(string jsonFileName);
 	}
 }

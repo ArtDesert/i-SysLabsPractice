@@ -1,0 +1,15 @@
+[
+  {
+    "Id": 9,
+    "Name": "GameDevelopment",
+    "DepartmentCode": "655",
+    "Employees": null
+  },
+  {
+    "Id": 10,
+    "Name": "DevOps",
+    "DepartmentCode": "821",
+    "Employees": null
+  }
+]
+

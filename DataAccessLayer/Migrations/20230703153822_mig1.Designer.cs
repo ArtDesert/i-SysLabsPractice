@@ -137,7 +137,7 @@ namespace DataAccessLayer.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("StatusToken")
+                    b.Property<int>("Name")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");

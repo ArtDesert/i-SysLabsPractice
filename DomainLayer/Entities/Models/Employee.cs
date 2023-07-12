@@ -1,4 +1,6 @@
-﻿namespace DomainLayer.Entities.Models
+﻿using DomainLayer.TableInitializators;
+
+namespace DomainLayer.Entities.Models
 {
     public class Employee
     {

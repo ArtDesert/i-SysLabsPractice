@@ -48,16 +48,16 @@ namespace WebApi.Controllers
 		}
 
 		[HttpDelete("{id}")]
-		public async Task<bool> DeleteProjectAsync(int projectId)
+		public async Task<bool> DeleteProjectAsync(int id)
 		{
-			var response = await _projectService.DeleteAsync(projectId);
+			var response = await _projectService.DeleteAsync(id);
 			return response.Data;
 		}
 
 		[HttpGet("{id}/employees")]
-		public async Task<IEnumerable<EmployeeDto>> GetAllEmployeesOnProjectAsync(int projectId, int pageNum, int pageSize)
+		public async Task<IEnumerable<EmployeeDto>> GetAllEmployeesOnProjectAsync(int id, int pageNum, int pageSize)
 		{
-			var response = await _projectService.GetAllEmployeesOnProjectAsync(projectId, pageNum, pageSize);
+			var response = await _projectService.GetAllEmployeesOnProjectAsync(id, pageNum, pageSize);
 			return response.Data;
 		}
 	}

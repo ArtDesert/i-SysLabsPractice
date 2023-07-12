@@ -56,7 +56,7 @@ namespace DomainLayer.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Birthday")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("DepartmentId")
                         .HasColumnType("integer");
@@ -134,12 +134,39 @@ namespace DomainLayer.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("StatusToken")
+                    b.Property<int>("Name")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
                     b.ToTable("Status", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = 0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = 3
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = 4
+                        });
                 });
 
             modelBuilder.Entity("EmployeeProject", b =>

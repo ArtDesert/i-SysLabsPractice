@@ -5,7 +5,7 @@ using DomainLayer.Entities.Models;
 
 namespace CoreLayer.Services.Implementations
 {
-	public class StatusService : IStatusService
+    public class StatusService : IStatusService
 	{
 		private readonly IStatusRepository _statusRepository;
 

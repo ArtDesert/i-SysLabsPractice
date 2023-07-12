@@ -13,7 +13,6 @@ namespace DataAccessLayer.Repositories.Implementations
 		public EmployeeRepository(CompanyStructureContext context)
 		{
 			_context = context;
-			StatusInitializator.GetInstance(_context).TryInitialize();
 		}
 
 		public async Task<bool> AddAsync(Employee entity)

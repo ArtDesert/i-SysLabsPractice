@@ -1,5 +1,4 @@
-﻿
-namespace DataAccessLayer.Repositories.Interfaces
+﻿namespace DataAccessLayer.Repositories.Interfaces
 {
 	public interface IBaseRepository<TEntity>
 	{

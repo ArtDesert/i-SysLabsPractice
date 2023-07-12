@@ -9,17 +9,18 @@ namespace WebApi.Controllers
 	[Route("api/departments")]
 	public class DepartmentController : Controller
 	{
-		private readonly IDepartmentService _departmentService;
+        private readonly IDepartmentService _departmentService;
 		private readonly ILogger<Department> _logger;
 
 		public DepartmentController(IDepartmentService departmentService, ILogger<Department> logger)
 		{
 			_departmentService = departmentService;
 			_logger = logger;
+			_logger.LogInformation("created departmentController");
 		}
 
 		[HttpPost]
-		public async Task<bool> AddDepartmentAsync(string name, string departmenttCode)
+		public async Task<bool> AddDepartmentAsync(string name, string departmenttCode) //Почему в url видны параметры name и departmenttCode?
 		{
 			var department = new Department() { Name = name, DepartmentCode = departmenttCode };
 			var response = await _departmentService.CreateAsync(department);
@@ -41,23 +42,23 @@ namespace WebApi.Controllers
 		}
 
 		[HttpPut]
-		public async Task<bool> UpdateDepartmentAsyncById(int id, string name, string departmentCode)
+		public async Task<bool> UpdateDepartmentAsyncById(int id, string name, string departmentCode) //Почему в url видны параметры name и departmenttCode?
 		{
 			var response = await _departmentService.UpdateAsync(id, name, departmentCode);
 			return response.Data;
 		}
 
 		[HttpDelete("{id}")]
-		public async Task<bool> DeleteDepartmentByIdAsync(int departmentId)
+		public async Task<bool> DeleteDepartmentByIdAsync(int id) //why long type?
 		{
-			var response = await _departmentService.DeleteAsync(departmentId);
+			var response = await _departmentService.DeleteAsync(id);
 			return response.Data;
 		}
 
-		[HttpGet("id/employees")]
-		public async Task<IEnumerable<EmployeeDto>> GetAllEmployeesOfDepartmentAsync(int departmentId, int pageNum, int pageSize)
+		[HttpGet("{id}/employees")]
+		public async Task<IEnumerable<EmployeeDto>> GetAllEmployeesOfDepartmentAsync(int id, int pageNum, int pageSize)
 		{
-			var response = await _departmentService.GetAllEmployeesOfDepartmentAsync(departmentId, pageNum, pageSize);
+			var response = await _departmentService.GetAllEmployeesOfDepartmentAsync(id, pageNum, pageSize);
 			return response.Data;
 		}
 	}

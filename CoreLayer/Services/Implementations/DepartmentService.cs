@@ -6,6 +6,7 @@ using static DomainLayer.Enums.ResponseStatusCode;
 using DomainLayer.DTO;
 using CoreLayer.Binders.Interfaces;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
+using Microsoft.Extensions.Logging;
 
 namespace CoreLayer.Services.Implementations
 {
@@ -14,28 +15,33 @@ namespace CoreLayer.Services.Implementations
 		private readonly IDepartmentRepository _departmentRepository;
 		private readonly IDepartmentBinder _departmentBinder;
 		private readonly IEmployeeBinder _employeeBinder;
+		private readonly ILogger<DepartmentService> _logger;
 
-		public DepartmentService(IDepartmentRepository departmentRepository, IDepartmentBinder binder, IEmployeeBinder employeeBinder)
+		public DepartmentService(IDepartmentRepository departmentRepository, IDepartmentBinder binder, IEmployeeBinder employeeBinder, ILogger<DepartmentService> logger)
 		{
 			_departmentRepository = departmentRepository;
 			_departmentBinder = binder;
 			_employeeBinder = employeeBinder;
+			_logger = logger;
 		}
 
 		public async Task<IBaseResponse<bool>> CreateAsync(Department entity)
 		{
+			_logger.LogInformation("CreateAsync is invoked");
 			var response = new BaseResponse<bool>();
 			try
 			{
 				response.Data = await _departmentRepository.AddAsync(entity);
 				response.Description = "Подразделение успешно добавлено";
 				response.StatusCode = OK;
+				_logger.LogInformation("CreateAsync completed successfully");
 			}
 			catch (Exception ex)
 			{
 				response.Description = "Не удалось добавить подразделение";
 				response.Description += $"[CreateAsync] : {ex.Message}";
 				response.StatusCode = UnknownError;
+				_logger.LogError($"[CreateAsync threw an exception] : {ex}");
 			}
 			return response;
 		}

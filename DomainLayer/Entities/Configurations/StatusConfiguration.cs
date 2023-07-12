@@ -15,7 +15,7 @@ namespace DomainLayer.Entities.Configurations
             builder.Property(x => x.Id)
                 .IsRequired();
 
-            builder.Property(x => x.StatusToken)
+            builder.Property(x => x.Name)
                 .IsRequired();
 
             builder.HasMany(s => s.Employees)

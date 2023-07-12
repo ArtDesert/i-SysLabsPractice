@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "lFi7LQk3wQs3mgh5ktQMRyNTrav3P4+vawBsIGprYlommHRkZOvin5JvC5e5ddWbYQHNH+/p7/oEDs4sxQydrg==",
+  "dgSpecHash": "LZZdbGXDza8+ASqKmj1aQh4scEkfsj2Gks75Dyjv+3mpInMSlS5ZhlOBxf3ISf2oLgkBuULLbfZBmg73pVSJZQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\artdesert\\source\\repos\\i-SysLabsPractice\\WebApi\\WebApi.csproj",
   "expectedPackageFiles": [
@@ -49,6 +49,10 @@
     "C:\\Users\\artdesert\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\artdesert\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\artdesert\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\artdesert\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\artdesert\\.nuget\\packages\\nlog\\5.2.2\\nlog.5.2.2.nupkg.sha512",
+    "C:\\Users\\artdesert\\.nuget\\packages\\nlog.extensions.logging\\5.3.2\\nlog.extensions.logging.5.3.2.nupkg.sha512",
+    "C:\\Users\\artdesert\\.nuget\\packages\\nlog.web.aspnetcore\\5.3.2\\nlog.web.aspnetcore.5.3.2.nupkg.sha512",
     "C:\\Users\\artdesert\\.nuget\\packages\\npgsql\\7.0.4\\npgsql.7.0.4.nupkg.sha512",
     "C:\\Users\\artdesert\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.4\\npgsql.entityframeworkcore.postgresql.7.0.4.nupkg.sha512",
     "C:\\Users\\artdesert\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",

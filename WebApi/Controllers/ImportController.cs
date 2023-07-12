@@ -1,6 +1,5 @@
 ﻿using CoreLayer.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Json.Nodes;
 
 namespace WebApi.Controllers
 {
@@ -9,17 +8,23 @@ namespace WebApi.Controllers
 	public class ImportController : Controller
 	{
 		private readonly IImportService _importService;
-		//private readonly ILogger<ImportClass> _logger;
+		//private readonly ILogger<ImportClass> _logger; // todo create ImportClass
 
 		public ImportController(IImportService importService)
 		{
 			_importService = importService;
 		}
 
-		[HttpGet]
-		public async Task<bool> ImportAsync(JsonObject json) //TODO
+		/// <summary>
+		/// Импорт сведений о сотрудниках, подразделениях и проектах из внешней системы (json-файла).
+		/// </summary>
+		/// <param name="json"></param>
+		/// <returns></returns>
+		[HttpPost]
+		public async Task<bool> ImportAsync(string jsonFileName)
 		{
-			var response = await _importService.ImportAsync(json);
+			var jsonFilePath = _importService.BuildJsonFilePath(jsonFileName);
+			var response = await _importService.ImportDataFromJsonAsync(jsonFilePath);
 			return response.Data;
 		}
 	}

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using static DomainLayer.Enums.StatusToken;
 
 namespace DomainLayer.Entities.Models
 {
@@ -12,8 +13,7 @@ namespace DomainLayer.Entities.Models
 
         public CompanyStructureContext(DbContextOptions<CompanyStructureContext> options) : base(options)
         {
-            //Database.EnsureDeleted();
-            //Database.EnsureCreated();
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -25,6 +25,13 @@ namespace DomainLayer.Entities.Models
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.Entity<Status>().HasData(
+				new Status() { Id = 1, Name = Active},
+                new Status() { Id = 2, Name = OnHoliday },
+                new Status() { Id = 3, Name = Dismissed },
+                new Status() { Id = 4, Name = Hospital },
+                new Status() { Id = 5, Name = InDecree }
+                );
 		}
 	}
 }

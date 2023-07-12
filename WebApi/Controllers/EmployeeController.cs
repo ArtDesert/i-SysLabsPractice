@@ -19,7 +19,7 @@ namespace WebApi.Controllers
 		}
 
 		[HttpPost]
-		public async Task<bool> AddEmployeeAsync(string name, string post, DateTime birthday, string email, string number, int supervisorId,
+		public async Task<bool> AddEmployeeAsync(string name, string post, DateTime birthday, string email, string number, int? supervisorId,
 			int departmentId, int statusId)
 		{
 			var employee = new Employee()
@@ -29,7 +29,7 @@ namespace WebApi.Controllers
 				Birthday = birthday,
 				Email = email,
 				Number = number,
-				SupervisorId = supervisorId == 0 ? null : supervisorId, // hack
+				SupervisorId = supervisorId,
 				DepartmentId = departmentId,
 				StatusId = statusId
 			};
@@ -58,17 +58,17 @@ namespace WebApi.Controllers
 			return response.Data;
 		}
 
-		[HttpDelete]
-		public async Task<bool> DeleteEmployeeAsync(int employeeId)
+		[HttpDelete("{id}")]
+		public async Task<bool> DeleteEmployeeAsync(int id)
 		{
-			var response = await _employeeService.DeleteAsync(employeeId);
+			var response = await _employeeService.DeleteAsync(id);
 			return response.Data;
 		}
 
 		[HttpGet("{id}/subordinates")]
-		public async Task<IEnumerable<EmployeeDto>> GetAllSubordinatesFromEmployeeAsync(int supervisorId, int pageNum, int pageSize)
+		public async Task<IEnumerable<EmployeeDto>> GetAllSubordinatesFromEmployeeAsync(int id, int pageNum, int pageSize)
 		{
-			var response = await _employeeService.GetAllSubordinatesFromEmployeeAsync(supervisorId, pageNum, pageSize);
+			var response = await _employeeService.GetAllSubordinatesFromEmployeeAsync(id, pageNum, pageSize);
 			return response.Data;
 		}
 	}

@@ -1,53 +1,28 @@
 ﻿using DomainLayer.Entities.Models;
-using static DomainLayer.Enums.StatusToken;
+using DomainLayer.Enums;
 
 namespace DomainLayer.TableInitializators
 {
-	public class StatusInitializator : IStatusInitializator
+	public static class StatusInitializator // undone
 	{
-		private static StatusInitializator instance;
+        static StatusInitializator()
+        {
+            
+        }
 
-		public StatusInitializator(CompanyStructureContext context)
+		public async static Task TryInitializeAsync(CompanyStructureContext context)
 		{
-			_context = context;
-		}
-
-		public static IStatusInitializator GetInstance(CompanyStructureContext context)
-		{
-			if (instance == null)
+			var statuses = Enumerable.Range(0, 5).Select(x => (StatusToken)x);
+			foreach (var status in statuses)
 			{
-				instance = new StatusInitializator(context);
+				var exist = context.Statuses.FirstOrDefault(x => x.Name == status);
+				if (exist == null)
+				{
+					var newStatus = new Status() { Name = status };
+					await context.AddAsync(newStatus);
+				}
 			}
-			return instance;
+			await context.SaveChangesAsync();
 		}
-
-		private readonly CompanyStructureContext _context;
-
-		public bool IsInitialized { get; set; }
-
-		public void TryInitialize()
-		{
-			if (!IsInitialized)
-			{
-				_context.Statuses.Add(new Status() { StatusToken = Active });
-				_context.Statuses.Add(new Status() { StatusToken = OnHoliday });
-				_context.Statuses.Add(new Status() { StatusToken = Dismissed });
-				_context.Statuses.Add(new Status() { StatusToken = Hospital });
-				_context.Statuses.Add(new Status() { StatusToken = InDecree });
-				_context.SaveChanges();
-				IsInitialized = true;
-			}
-		}
-	}
-
-	public interface IBaseInitializator
-	{
-		bool IsInitialized { get; set; }
-		void TryInitialize();
-	}
-
-	public interface IStatusInitializator : IBaseInitializator
-	{
-		new bool IsInitialized { get; }
 	}
 }
