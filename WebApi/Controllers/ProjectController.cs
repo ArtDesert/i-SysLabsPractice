@@ -1,5 +1,5 @@
 ﻿using CoreLayer.Services.Interfaces;
-using DomainLayer.DTO;
+using DataContractsLayer.DTO;
 using DomainLayer.Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 

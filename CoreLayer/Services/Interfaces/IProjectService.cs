@@ -1,6 +1,6 @@
 ﻿using DomainLayer.Entities.Models;
 using CoreLayer.Response;
-using DomainLayer.DTO;
+using DataContractsLayer.DTO;
 
 namespace CoreLayer.Services.Interfaces
 {

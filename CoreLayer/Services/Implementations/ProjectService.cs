@@ -1,8 +1,8 @@
-﻿using CoreLayer.Binders.Interfaces;
-using CoreLayer.Response;
+﻿using CoreLayer.Response;
 using CoreLayer.Services.Interfaces;
 using DataAccessLayer.Repositories.Interfaces;
-using DomainLayer.DTO;
+using DataContractsLayer.Binders.Interfaces;
+using DataContractsLayer.DTO;
 using DomainLayer.Entities.Models;
 using static DomainLayer.Enums.ResponseStatusCode;
 

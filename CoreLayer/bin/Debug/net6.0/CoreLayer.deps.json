@@ -9,6 +9,7 @@
       "CoreLayer/1.0.0": {
         "dependencies": {
           "DataAccessLayer": "1.0.0",
+          "DataContractsLayer": "1.0.0",
           "Newtonsoft.Json": "13.0.3"
         },
         "runtime": {
@@ -760,6 +761,15 @@
           "DataAccessLayer.dll": {}
         }
       },
+      "DataContractsLayer/1.0.0": {
+        "dependencies": {
+          "DataAccessLayer": "1.0.0",
+          "DomainLayer": "1.0.0"
+        },
+        "runtime": {
+          "DataContractsLayer.dll": {}
+        }
+      },
       "DomainLayer/1.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Configuration.Json": "7.0.0",
@@ -1276,6 +1286,11 @@
       "hashPath": "system.windows.extensions.5.0.0.nupkg.sha512"
     },
     "DataAccessLayer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DataContractsLayer/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

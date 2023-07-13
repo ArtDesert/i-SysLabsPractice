@@ -1,9 +1,9 @@
-using CoreLayer.Binders.Implementations;
-using CoreLayer.Binders.Interfaces;
 using CoreLayer.Services.Implementations;
 using CoreLayer.Services.Interfaces;
 using DataAccessLayer.Repositories.Implementations;
 using DataAccessLayer.Repositories.Interfaces;
+using DataContractsLayer.Binders.Implementations;
+using DataContractsLayer.Binders.Interfaces;
 using DomainLayer.Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using NLog;

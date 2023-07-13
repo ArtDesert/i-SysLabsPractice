@@ -1,0 +1,12 @@
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\bin\Debug\net6.0\DataContracts.deps.json
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\bin\Debug\net6.0\DataContracts.dll
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\bin\Debug\net6.0\DataContracts.pdb
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\obj\Debug\net6.0\DataContracts.csproj.AssemblyReference.cache
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\obj\Debug\net6.0\DataContracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\obj\Debug\net6.0\DataContracts.AssemblyInfoInputs.cache
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\obj\Debug\net6.0\DataContracts.AssemblyInfo.cs
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\obj\Debug\net6.0\DataContracts.csproj.CoreCompileInputs.cache
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\obj\Debug\net6.0\DataContracts.dll
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\obj\Debug\net6.0\refint\DataContracts.dll
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\obj\Debug\net6.0\DataContracts.pdb
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\obj\Debug\net6.0\ref\DataContracts.dll

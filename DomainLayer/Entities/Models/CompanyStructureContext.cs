@@ -25,13 +25,6 @@ namespace DomainLayer.Entities.Models
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-            modelBuilder.Entity<Status>().HasData(
-				new Status() { Id = 1, Name = Active},
-                new Status() { Id = 2, Name = OnHoliday },
-                new Status() { Id = 3, Name = Dismissed },
-                new Status() { Id = 4, Name = Hospital },
-                new Status() { Id = 5, Name = InDecree }
-                );
 		}
 	}
 }

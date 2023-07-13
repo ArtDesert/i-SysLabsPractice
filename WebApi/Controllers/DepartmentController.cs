@@ -1,5 +1,5 @@
 ﻿using CoreLayer.Services.Interfaces;
-using DomainLayer.DTO;
+using DataContractsLayer.DTO;
 using DomainLayer.Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,9 +20,9 @@ namespace WebApi.Controllers
 		}
 
 		[HttpPost]
-		public async Task<bool> AddDepartmentAsync(string name, string departmenttCode) //Почему в url видны параметры name и departmenttCode?
+		public async Task<bool> AddDepartmentAsync(string name, string departmentCode) //Почему в url видны параметры name и departmenttCode?
 		{
-			var department = new Department() { Name = name, DepartmentCode = departmenttCode };
+			var department = new Department() { Name = name, DepartmentCode = departmentCode };
 			var response = await _departmentService.CreateAsync(department);
 			return response.Data;
 		}

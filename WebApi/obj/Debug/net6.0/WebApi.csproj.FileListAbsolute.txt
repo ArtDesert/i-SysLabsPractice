@@ -104,3 +104,5 @@ C:\Users\artdesert\source\repos\i-SysLabsPractice\WebApi\bin\Debug\net6.0\NLog.d
 C:\Users\artdesert\source\repos\i-SysLabsPractice\WebApi\bin\Debug\net6.0\NLog.Extensions.Logging.dll
 C:\Users\artdesert\source\repos\i-SysLabsPractice\WebApi\bin\Debug\net6.0\NLog.Web.AspNetCore.dll
 C:\Users\artdesert\source\repos\i-SysLabsPractice\WebApi\bin\Debug\net6.0\nlog.config
+C:\Users\artdesert\source\repos\i-SysLabsPractice\WebApi\bin\Debug\net6.0\DataContractsLayer.dll
+C:\Users\artdesert\source\repos\i-SysLabsPractice\WebApi\bin\Debug\net6.0\DataContractsLayer.pdb

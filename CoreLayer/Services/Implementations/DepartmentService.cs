@@ -3,10 +3,10 @@ using DataAccessLayer.Repositories.Interfaces;
 using DomainLayer.Entities.Models;
 using CoreLayer.Response;
 using static DomainLayer.Enums.ResponseStatusCode;
-using DomainLayer.DTO;
-using CoreLayer.Binders.Interfaces;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using Microsoft.Extensions.Logging;
+using DataContractsLayer.Binders.Interfaces;
+using DataContractsLayer.DTO;
 
 namespace CoreLayer.Services.Implementations
 {

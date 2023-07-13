@@ -1,0 +1,17 @@
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\bin\Debug\net6.0\DataContractsLayer.deps.json
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\bin\Debug\net6.0\DataContractsLayer.dll
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\bin\Debug\net6.0\DataContractsLayer.pdb
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\obj\Debug\net6.0\DataContractsLayer.csproj.AssemblyReference.cache
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\obj\Debug\net6.0\DataContractsLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\obj\Debug\net6.0\DataContractsLayer.AssemblyInfoInputs.cache
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\obj\Debug\net6.0\DataContractsLayer.AssemblyInfo.cs
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\obj\Debug\net6.0\DataContractsLayer.csproj.CoreCompileInputs.cache
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\obj\Debug\net6.0\DataContractsLayer.dll
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\obj\Debug\net6.0\refint\DataContractsLayer.dll
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\obj\Debug\net6.0\DataContractsLayer.pdb
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\obj\Debug\net6.0\ref\DataContractsLayer.dll
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\bin\Debug\net6.0\DataAccessLayer.dll
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\bin\Debug\net6.0\DomainLayer.dll
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\bin\Debug\net6.0\DataAccessLayer.pdb
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\bin\Debug\net6.0\DomainLayer.pdb
+C:\Users\artdesert\source\repos\i-SysLabsPractice\DataContracts\obj\Debug\net6.0\DataContractsLayer.csproj.CopyComplete

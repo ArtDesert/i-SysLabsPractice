@@ -1254,6 +1254,20 @@
           "bin/placeholder/DataAccessLayer.dll": {}
         }
       },
+      "DataContractsLayer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "DataAccessLayer": "1.0.0",
+          "DomainLayer": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DataContractsLayer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataContractsLayer.dll": {}
+        }
+      },
       "DomainLayer/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -3735,6 +3749,11 @@
       "path": "../DataAccessLayer/DataAccessLayer.csproj",
       "msbuildProject": "../DataAccessLayer/DataAccessLayer.csproj"
     },
+    "DataContractsLayer/1.0.0": {
+      "type": "project",
+      "path": "../DataContracts/DataContractsLayer.csproj",
+      "msbuildProject": "../DataContracts/DataContractsLayer.csproj"
+    },
     "DomainLayer/1.0.0": {
       "type": "project",
       "path": "../DomainLayer/DomainLayer.csproj",
@@ -3744,6 +3763,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "DataAccessLayer >= 1.0.0",
+      "DataContractsLayer >= 1.0.0",
       "Newtonsoft.Json >= 13.0.3"
     ]
   },
@@ -3782,6 +3802,9 @@
           "projectReferences": {
             "C:\\Users\\artdesert\\source\\repos\\i-SysLabsPractice\\DataAccessLayer\\DataAccessLayer.csproj": {
               "projectPath": "C:\\Users\\artdesert\\source\\repos\\i-SysLabsPractice\\DataAccessLayer\\DataAccessLayer.csproj"
+            },
+            "C:\\Users\\artdesert\\source\\repos\\i-SysLabsPractice\\DataContracts\\DataContractsLayer.csproj": {
+              "projectPath": "C:\\Users\\artdesert\\source\\repos\\i-SysLabsPractice\\DataContracts\\DataContractsLayer.csproj"
             }
           }
         }
@@ -3817,7 +3840,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }
